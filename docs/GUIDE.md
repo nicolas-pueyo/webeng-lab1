@@ -89,20 +89,16 @@ For this assignment, we'll be using the following technologies:
 
 4. **Authenticate with GitHub**: Authenticate via HTTPS (recommended) or SSH. You can follow the [GitHub guide](https://docs.github.com/en/get-started/quickstart/set-up-git) for detailed instructions.
 
-### Get Access to the Repository
-
-You must use the invitation URL published in Moodle.
-
 ### Clone and Run the Application
 
 1. **Clone the Repository**: Use the following commands to clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-github-username/lab1-git-race-your-github-username
+   git clone https://github.com/UNIZAR-30246-WebEngineering/lab1-git-race.git
    cd lab1-git-race-your-github-username
    ```
 
-2. **Test the Repository**: Navigate to the `lab1-git-race-your-github-username` folder in your terminal and run:
+2. **Test the Repository**: Navigate to the `lab1-git-race` folder in your terminal and run:
 
    ```bash
    ./gradlew check
