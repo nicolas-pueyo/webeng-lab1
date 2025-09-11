@@ -415,7 +415,7 @@ You must submit your work in **two ways**:
 Create a zip file containing your complete project and upload it to Moodle. The zip file should include:
 
 - All source code files
-- Documentation files (README.md, description.md, REPORT.md)
+- Documentation files (README.md, REPORT.md)
 - Test files
 - Configuration files
 - Any additional files you've created
