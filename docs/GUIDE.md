@@ -1,7 +1,7 @@
 ---
 title: "Web Engineering 2025-2026"
 subtitle: "Lab 1: Git Race"   
-date: "2025-01-10"
+date: "2025-09-11"
 format:
   html:
     toc: true
