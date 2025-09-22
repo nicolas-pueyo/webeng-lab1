@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-bs-theme="ligth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
     <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
     <link th:href="@{/css/styles.css}" href="/css/styles.css" rel="stylesheet">
 </head>
-<body class="bg-light">
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="/">
@@ -19,6 +19,7 @@
                 Modern Web App
             </a>
             <div class="navbar-nav ms-auto">
+                <button id="changeThemeBtn" class="btn btn-primary w-100">Change color theme</button>
                 <a class="nav-link" href="/actuator/health" target="_blank">Health</a>
                 <a class="nav-link" href="/api/hello">API</a>
             </div>
@@ -96,7 +97,7 @@
                                                 <h6 class="text-primary text-start">
                                                     <i class="bi bi-arrow-right-circle"></i> HTTP Request
                                                 </h6>
-                                                <div id="requestInfo" class="bg-light p-3 rounded text-start http-debug-request">
+                                                <div id="requestInfo" class="p-3 rounded text-start http-debug-request">
                                                     <div class="text-muted">Click a test button above to see HTTP request details...</div>
                                                 </div>
                                             </div>
@@ -105,7 +106,7 @@
                                                 <h6 class="text-success text-start">
                                                     <i class="bi bi-arrow-left-circle"></i> HTTP Response
                                                 </h6>
-                                                <div id="responseInfo" class="bg-light p-3 rounded text-start http-debug-response">
+                                                <div id="responseInfo" class="p-3 rounded text-start http-debug-response">
                                                     <div class="text-muted">Click a test button above to see HTTP response details...</div>
                                                 </div>
                                             </div>

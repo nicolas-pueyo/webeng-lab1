@@ -8,12 +8,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const responseInfo = document.getElementById('responseInfo');
     const webNameInput = document.getElementById('webName');
     const apiNameInput = document.getElementById('apiName');
+    const changeColorThemeBtn = document.getElementById('changeThemeBtn');
     
     // Format timestamp
     function getTimestamp() {
         return new Date().toLocaleString();
     }
     
+    // Retrieve current color theme and swap to the alternative
+    changeColorThemeBtn.addEventListener('click', function() {
+        const htmlElement = document.documentElement;
+        const theme = htmlElement.getAttribute('data-bs-theme');
+        const newTheme = (theme == "light" ? "dark" : "light");
+        htmlElement.setAttribute('data-bs-theme', newTheme);
+    });
+
     // Display request information
     function displayRequestInfo(url, method = 'GET', headers = {}) {
         const timestamp = getTimestamp();
@@ -30,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="mb-2 text-start">
                 <strong>Headers:</strong>
                 <div class="ms-3 text-start">
-                    <div class="text-start"><strong>Accept:</strong> application/json, text/plain, */*</div>
+                    <div class="text-start"><strong>Accept:</strong> application/json, text/plain, */</div>
                     <div class="text-start"><strong>Content-Type:</strong> application/json</div>
                     <div class="text-start"><strong>User-Agent:</strong> ${navigator.userAgent}</div>
                 </div>
