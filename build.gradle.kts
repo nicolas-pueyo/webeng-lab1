@@ -24,6 +24,7 @@ dependencies {
     implementation(libs.spring.boot.starter.actuator)
     implementation(libs.spring.boot.starter.validation)
     developmentOnly(libs.spring.boot.devtools)
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
     implementation(libs.bootstrap)
     implementation(libs.jackson.module.kotlin)
     testImplementation(libs.spring.boot.starter.test)
