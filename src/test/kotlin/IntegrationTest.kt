@@ -45,7 +45,7 @@ class IntegrationTest {
         assertThat(response.headers.contentType).isEqualTo(MediaType.APPLICATION_JSON)
         System.out.println("Response Body: ${response.body}")
         assertThat(response.body).containsAnyOf(
-            "Buenos días", "Buenas tardes", "Buenas noches"
+            "Good morning", "Good afternoon", "Good evening"
         )
         assertThat(response.body).contains("timestamp")
     }

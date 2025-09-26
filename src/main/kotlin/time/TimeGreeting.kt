@@ -6,12 +6,12 @@ import org.springframework.stereotype.Service
 @Service
 class TimeGreetingService(private val clock: AppClock) {
     fun greet(name: String?): String {
-        val who = (name?.takeIf { it.isNotBlank() } ?: "jefe").trim()
+        val who = (name?.takeIf { it.isNotBlank() } ?: "boss").trim()
         val time: LocalTime = clock.now().toLocalTime()
         val prefix = when (time) {
-            in MORNING_START..MORNING_END -> "Buenos días"
-            in AFTERNOON_START..AFTERNOON_END -> "Buenas tardes"
-            else -> "Buenas noches"
+            in MORNING_START..MORNING_END -> "Good morning"
+            in AFTERNOON_START..AFTERNOON_END -> "Good afternoon"
+            else -> "Good evening"
         }
         return "$prefix, $who"
     }

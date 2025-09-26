@@ -14,6 +14,11 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.mockito.Mockito
 
+/**
+ * MVC tests just for HelloController,
+ * loading a slice of the application context
+ * and testing valid returns.
+ */
 @WebMvcTest(HelloController::class)
 class HelloControllerMVCTests {
     @Value("\${app.message:Welcome to the Modern Web App!}")
@@ -43,6 +48,11 @@ class HelloControllerMVCTests {
     }
 }
 
+/**
+ * MVC tests just for HelloApiController,
+ * loading a slice of the application context
+ * and testing valid returns.
+ */
 @WebMvcTest(HelloApiController::class)
 class HelloApiControllerMVCTests {
 
@@ -55,16 +65,19 @@ class HelloApiControllerMVCTests {
     @Test
     fun `should return API response as JSON`() {
 
-    Mockito.`when`(timeGreetingService.greet("Test")).thenReturn("Buenas tardes, Test!")
+    /** Fixed message, we only test the controller call+return, 
+    *   the service is tested separately in unit tests.
+    */
+    Mockito.`when`(timeGreetingService.greet("Test")).thenReturn("Good afternoon, Test!")
 
         mockMvc.perform(get("/api/hello").param("name", "Test"))
             .andDo(print())
             .andExpect(status().isOk)
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.message", anyOf (
-                equalTo("Buenos días, Test!"),
-                equalTo("Buenas tardes, Test!"),
-                equalTo("Buenas noches, Test!")
+                equalTo("Good morning, Test!"),
+                equalTo("Good afternoon, Test!"),
+                equalTo("Good evening, Test!")
             )))
             .andExpect(jsonPath("$.timestamp").exists())
     }
