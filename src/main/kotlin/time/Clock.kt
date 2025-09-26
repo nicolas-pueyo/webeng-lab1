@@ -11,6 +11,7 @@ interface AppClock {
 
 @Component
 class SystemClock : AppClock {
+    // Fixed to Madrid due to scope reasons, not intended for global use.
     override fun now(): LocalDateTime = LocalDateTime.now(ZoneId.of("Europe/Madrid"))
 }
 
