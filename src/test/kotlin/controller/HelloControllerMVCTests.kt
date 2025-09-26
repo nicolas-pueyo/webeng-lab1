@@ -1,5 +1,6 @@
 package es.unizar.webeng.hello.controller
 
+import es.unizar.webeng.hello.time.TimeGreetingService
 import org.hamcrest.CoreMatchers.*
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -10,8 +11,10 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers.*
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
+import org.springframework.boot.test.mock.mockito.MockBean
+import org.mockito.Mockito
 
-@WebMvcTest(HelloController::class, HelloApiController::class)
+@WebMvcTest(HelloController::class)
 class HelloControllerMVCTests {
     @Value("\${app.message:Welcome to the Modern Web App!}")
     private lateinit var message: String
@@ -38,14 +41,31 @@ class HelloControllerMVCTests {
             .andExpect(model().attribute("message", equalTo("Hello, Developer!")))
             .andExpect(model().attribute("name", equalTo("Developer")))
     }
-    
+}
+
+@WebMvcTest(HelloApiController::class)
+class HelloApiControllerMVCTests {
+
+    @Autowired
+    private lateinit var mockMvc: MockMvc
+
+    @MockBean
+    private lateinit var timeGreetingService: TimeGreetingService
+
     @Test
     fun `should return API response as JSON`() {
+
+    Mockito.`when`(timeGreetingService.greet("Test")).thenReturn("Buenas tardes, Test!")
+
         mockMvc.perform(get("/api/hello").param("name", "Test"))
             .andDo(print())
             .andExpect(status().isOk)
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("$.message", equalTo("Hello, Test!")))
+            .andExpect(jsonPath("$.message", anyOf (
+                equalTo("Buenos días, Test!"),
+                equalTo("Buenas tardes, Test!"),
+                equalTo("Buenas noches, Test!")
+            )))
             .andExpect(jsonPath("$.timestamp").exists())
     }
 }
