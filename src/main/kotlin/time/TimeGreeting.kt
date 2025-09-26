@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service
 @Service
 class TimeGreetingService(private val clock: AppClock) {
     fun greet(name: String?): String {
-        val who = (name?.takeIf { it.isNotBlank() } ?: "there").trim()
+        val who = (name?.takeIf { it.isNotBlank() } ?: "jefe").trim()
         val time: LocalTime = clock.now().toLocalTime()
         val prefix = when (time) {
             in MORNING_START..MORNING_END -> "Buenos días"

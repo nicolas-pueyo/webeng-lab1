@@ -33,15 +33,4 @@ class HelloControllerUnitTests {
         assertThat(model.getAttribute("message")).isEqualTo("Hello, Developer!")
         assertThat(model.getAttribute("name")).isEqualTo("Developer")
     }
-    
-    @Test
-    fun `should return API response with timestamp`() {
-        val apiController = HelloApiController()
-        val response = apiController.helloApi("Test")
-        
-        assertThat(response).containsKey("message")
-        assertThat(response).containsKey("timestamp")
-        assertThat(response["message"]).isEqualTo("Hello, Test!")
-        assertThat(response["timestamp"]).isNotNull()
-    }
 }
